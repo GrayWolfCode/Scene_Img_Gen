@@ -54,7 +54,8 @@ def upload_to_firebase(file_name):
 @app.route('/generate-images', methods=['POST'])
 def generate_images():
     # Assuming you'll send the prompts as a list in a JSON payload.
-    prompts2 = request.json.get('prompts')
+    input = request.json.get('prompts')
+    prompts2 = input.split('#')
     drawing_style = request.json.get('style')
     if drawing_style == "Pen Sketch":
         URL = 'https://901c99bd8ad0c0fbf6.gradio.live'
