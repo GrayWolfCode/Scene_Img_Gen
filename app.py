@@ -23,7 +23,7 @@ CLIENT_ID = os.environ.get('CLIENT_ID')
 AUTH_URI = os.environ.get('AUTH_URI')
 TOKEN_URI = os.environ.get('TOKEN_URI')
 AUTH_PROVIDER_CERT_URL = os.environ.get('AUTH_PROVIDER_CERT_URL')
-CLIENT_CERT_URL = os.environ.get(' ')
+CLIENT_CERT_URL = os.environ.get('CLIENT_CERT_URL')
 
 # Create the credentials object
 cred = credentials.Certificate({
