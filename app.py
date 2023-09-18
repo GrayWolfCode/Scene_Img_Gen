@@ -58,7 +58,7 @@ def generate_images():
     prompts2 = input.split('#')
     drawing_style = request.json.get('style')
     if drawing_style == "Pen Sketch":
-        URL = 'https://965c70546efbd62c06.gradio.live'
+        URL = 'https://3de4e209a6c2558022.gradio.live'
     if not prompts2:
         return jsonify({"error": "No prompts provided."}), 400
 
