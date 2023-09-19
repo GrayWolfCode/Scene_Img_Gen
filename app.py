@@ -62,19 +62,21 @@ def generate_images():
     if not prompts2:
         return jsonify({"error": "No prompts provided."}), 400
 
-    prompts = ['wbline '+prompt +
+    prompts = ['wbline (clear detailed big face:1.0) '+prompt +
                ' <lora:My_LoRA_Model:1>' for prompt in prompts2]
+    negative_prompt = 'NG_DeepNegative_V1_75T, worst quality, low quality, lowres, bad anatomy, bad hands, blurry'
     image_urls = []
 
     for index, prompt in enumerate(prompts):
         payload = {
             "prompt": prompt,
+            "negative_prompt": negative_prompt,
             "width": "768",
             "height": "512",
             "sd_model_checkpoint": "v1-5-pruned.ckpt [e1441589a6]",
-            "sampler_index": "Euler a",
-            "cfg_scale": 7,
-            "steps": 20
+            "sampler_index": "DPM++ SDE Karras",
+            "cfg_scale": 9,
+            "steps": 28
         }
         response = requests.post(url=f'{URL}/sdapi/v1/txt2img', json=payload)
 
