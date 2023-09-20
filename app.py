@@ -58,25 +58,25 @@ def generate_images():
     prompts2 = input.split('#')
     drawing_style = request.json.get('style')
     if drawing_style == "Pen Sketch":
-        URL = 'https://25c495c9ec8aa5feff.gradio.live'
+        URL = 'https://98fc7080350f579f31.gradio.live'
     if not prompts2:
         return jsonify({"error": "No prompts provided."}), 400
 
-    prompts = ['wbline (clear detailed big face:1.0) '+prompt +
+    prompts = ['wsline '+prompt +
                ' <lora:My_LoRA_Model:1>' for prompt in prompts2]
-    negative_prompt = 'NG_DeepNegative_V1_75T, worst quality, low quality, lowres, bad anatomy, bad hands, blurry'
+    negative_prompt = 'blurry'
     image_urls = []
 
     for index, prompt in enumerate(prompts):
         payload = {
             "prompt": prompt,
             "negative_prompt": negative_prompt,
-            "width": "768",
-            "height": "512",
-            "sd_model_checkpoint": "v1-5-pruned.ckpt [e1441589a6]",
-            "sampler_index": "DPM++ SDE Karras",
-            "cfg_scale": 9,
-            "steps": 28
+            "width": "1024",
+            "height": "683",
+            "sd_model_checkpoint": "sd_xl_base_1.0.safetensors [31e35c80fc]",
+            "sampler_index": "DPM++ 2M SDE Karras",
+            "cfg_scale": 7,
+            "steps": 30
         }
         response = requests.post(url=f'{URL}/sdapi/v1/txt2img', json=payload)
 
