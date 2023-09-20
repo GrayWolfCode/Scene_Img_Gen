@@ -62,18 +62,15 @@ def generate_images():
     if not prompts2:
         return jsonify({"error": "No prompts provided."}), 400
 
-    prompts = ['wsline '+prompt +
+    prompts = ['wsline ' + prompt +
                ' <lora:My_LoRA_Model:1>' for prompt in prompts2]
-    negative_prompt = 'blurry'
     image_urls = []
 
     for index, prompt in enumerate(prompts):
         payload = {
             "prompt": prompt,
-            "negative_prompt": negative_prompt,
-            "width": "1024",
-            "height": "683",
-            "sd_model_checkpoint": "sd_xl_base_1.0.safetensors [31e35c80fc]",
+            "width": 1024,
+            "height": 683,
             "sampler_index": "DPM++ 2M SDE Karras",
             "cfg_scale": 7,
             "steps": 30
