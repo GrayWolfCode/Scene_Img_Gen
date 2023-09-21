@@ -66,8 +66,6 @@ def generate_images():
     if not prompts2:
         return jsonify({"error": "No prompts provided."}), 400
 
-    prompts = ['wsline ' + prompt +
-               ' <lora:My_LoRA_Model:1>' for prompt in prompts2]
     image_urls = []
 
     for index, prompt in enumerate(prompts):
