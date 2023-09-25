@@ -12,7 +12,7 @@ from PIL import Image, PngImagePlugin
 
 app = Flask(__name__)
 CORS(app)
-URL = 'https://a3e065a890d01f1ce9.gradio.live'
+URL = 'https://a4205e0308c0309152.gradio.live'
 
 # Load environment variables
 PROJECT_ID = os.environ.get('PROJECT_ID')
@@ -75,7 +75,7 @@ def generate_images():
             "width": 1024,
             "height": 683,
             "sampler_index": "DPM++ 2M SDE Karras",
-            "cfg_scale": 9,
+            "cfg_scale": 7,
             "steps": 40
         }
         response = requests.post(url=f'{URL}/sdapi/v1/txt2img', json=payload)
