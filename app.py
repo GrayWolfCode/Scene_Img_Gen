@@ -75,8 +75,8 @@ def generate_images():
             "width": 1536,
             "height": 1024,
             "sampler_index": "DPM++ 2M SDE Karras",
-            "cfg_scale": 8,
-            "steps": 32
+            "cfg_scale": 9,
+            "steps": 40
         }
         response = requests.post(url=f'{URL}/sdapi/v1/txt2img', json=payload)
 
