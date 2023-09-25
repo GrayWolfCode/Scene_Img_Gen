@@ -71,12 +71,12 @@ def generate_images():
     for index, prompt in enumerate(prompts):
         payload = {
             "prompt": prompt,
-            "restore_faces": True,
+            "negative_prompt": "blurry",
             "width": 1024,
             "height": 683,
             "sampler_index": "DPM++ 2M SDE Karras",
             "cfg_scale": 7,
-            "steps": 40
+            "steps": 30
         }
         response = requests.post(url=f'{URL}/sdapi/v1/txt2img', json=payload)
 
