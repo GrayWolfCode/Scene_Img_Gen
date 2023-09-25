@@ -12,7 +12,7 @@ from PIL import Image, PngImagePlugin
 
 app = Flask(__name__)
 CORS(app)
-URL = 'https://721a16803c98eb3993.gradio.live'
+URL = 'https://a3e065a890d01f1ce9.gradio.live'
 
 # Load environment variables
 PROJECT_ID = os.environ.get('PROJECT_ID')
@@ -72,8 +72,8 @@ def generate_images():
         payload = {
             "prompt": prompt,
             "restore_faces": True,
-            "width": 1536,
-            "height": 1024,
+            "width": 1024,
+            "height": 683,
             "sampler_index": "DPM++ 2M SDE Karras",
             "cfg_scale": 9,
             "steps": 40
