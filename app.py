@@ -12,7 +12,7 @@ from PIL import Image, PngImagePlugin
 
 app = Flask(__name__)
 CORS(app)
-URL = 'https://b049139d7888dbb355.gradio.live'
+URL = 'https://f79dc6f51f62e05f22.gradio.live'
 
 # Load environment variables
 PROJECT_ID = os.environ.get('PROJECT_ID')
