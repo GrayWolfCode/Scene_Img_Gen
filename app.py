@@ -12,7 +12,7 @@ from PIL import Image, PngImagePlugin
 
 app = Flask(__name__)
 CORS(app)
-URL = 'https://f79dc6f51f62e05f22.gradio.live'
+URL = 'https://78ecd9dd5d8f1de914.gradio.live'
 
 # Load environment variables
 PROJECT_ID = os.environ.get('PROJECT_ID')
@@ -58,8 +58,8 @@ def generate_images():
     prompts2 = input.split('#')
     drawing_style = request.json.get('style')
     if drawing_style == "Pen Sketch":
-        prompts = ['wsline, ' + prompt +
-                   ' <lora:My_LoRA_Model:1>' for prompt in prompts2]
+        prompts = ['xyzsketch, ' + prompt +
+                   ' <lora:xyzsketch:1>' for prompt in prompts2]
     else:
         prompts = ['watercolor (medium), ' + prompt +
                    ' <lora:nanase_v1:1>' for prompt in prompts2]
@@ -73,7 +73,7 @@ def generate_images():
             "prompt": prompt,
             "width": 1024,
             "height": 683,
-            "sampler_index": "DPM++ 2M SDE Karras",
+            "sampler_index": "Euler a",
             "cfg_scale": 7,
             "steps": 30
         }
