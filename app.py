@@ -71,8 +71,8 @@ def generate_images():
     for index, prompt in enumerate(prompts):
         payload = {
             "prompt": prompt,
-            "width": 1024,
-            "height": 683,
+            "width": 1536,
+            "height": 1024,
             "sampler_index": "Euler a",
             "cfg_scale": 7,
             "steps": 30
