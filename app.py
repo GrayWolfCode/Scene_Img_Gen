@@ -12,7 +12,7 @@ from PIL import Image, PngImagePlugin
 
 app = Flask(__name__)
 CORS(app)
-URL = 'https://74963a89015bd4670c.gradio.live'
+URL = 'https://7d9ee630599b81c1b7.gradio.live'
 
 # Load environment variables
 PROJECT_ID = os.environ.get('PROJECT_ID')
@@ -71,8 +71,8 @@ def generate_images():
     for index, prompt in enumerate(prompts):
         payload = {
             "prompt": prompt,
-            "width": 1536,
-            "height": 1024,
+            "width": 1344,
+            "height": 786,
             "sampler_index": "Euler a",
             "cfg_scale": 7,
             "steps": 30
