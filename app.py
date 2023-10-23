@@ -104,11 +104,15 @@ def generate_images():
 def generate_back():
     prompt_response = request.json.get('prompt')
     img_url_response = request.json.get('imgurl')
+    drawing_style = request.json.get('style')
     img_response = requests.get(img_url_response, stream=True)
     with open("input.png", 'wb') as file:
         for chunk in img_response.iter_content(chunk_size=8192):
             file.write(chunk)
-    prompt='vvvsketch, ' + prompt_response + ' <lora:vvvsketch:1>'
+    if drawing_style == "Pen Sketch":
+        prompt = 'vvvsketch, ' + prompt_response + ' <lora:vvvsketch:1>'
+    else:
+        prompt = 'watercolor (medium), ' + prompt_response + ' <lora:nanase_v1:1>'
     # img_response = requests.get(img_url_response)
     # image_data = img_response.content
     # base64_encoded = base64.b64encode(image_data).decode('utf-8')
@@ -133,7 +137,7 @@ def generate_back():
         response2 = requests.post(url=f'{URL}/sdapi/v1/png-info', json=png_payload)
         pnginfo = PngImagePlugin.PngInfo()
         pnginfo.add_text("parameters", response2.json().get("info"))
-        file_name = 'output.png'
+        file_name = f'output_{int(time.time())}.png'
         image.save(file_name, pnginfo=pnginfo)
         image_url = upload_to_firebase(file_name)
     return jsonify({"image_urls": image_url})
